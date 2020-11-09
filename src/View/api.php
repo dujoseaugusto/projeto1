@@ -32,7 +32,7 @@
       <div class="card p-3 m-3">
         <label for="#texto">Remove Cadastro</label><br />
         Endpoint: <?=URL_SITE?>api/remove_pessoa/id<br />
-        Type: GET <br />
+        Type: DELETE <br />
                     
       </div>
       <div class="card p-3 m-3">
@@ -54,7 +54,7 @@
       <div class="card p-3 m-3">
         <label for="#texto">Remove Contato</label><br />
         Endpoint: <?=URL_SITE?>api/remove_contato/id <br />
-        Type: GET <br />
+        Type: DELETE <br />
         
                     
       </div>
