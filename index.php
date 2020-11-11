@@ -9,6 +9,7 @@ use CoffeeCode\Router\Router;
 
 $rotas = new Router(URL_SITE);
 
+/*paginas*/
 $rotas->namespace('Controller')->group(null);
 $rotas->get("/", "Paginas:home");
 $rotas->get("/valida", "Paginas:valida");
@@ -16,12 +17,15 @@ $rotas->get("/cadastro", "Paginas:cadastro");
 $rotas->get("/api","Paginas:api");
 $rotas->get("/erro/{coderro}","Paginas:erro");
 
+/*Api rotas */
 $rotas->namespace('Controller')->group('api');
 $rotas->post("/cadastro_pessoa", "Api:cadastro_pessoa");
 $rotas->delete("/remove_pessoa/{id_pessoa}", "Api:remove_pessoa");
 $rotas->put("/altera_pessoa", "Api:altera_pessoa");
 $rotas->delete("/remove_contato/{id_contato}", "Api:remove_contato");
 $rotas->get("/lista_pessoa", "Api:lista_pessoas");
+$rotas->get("/lista_pessoa/{id_pessoa}", "Api:lista_pessoas");
+
 
 $rotas->dispatch();
 

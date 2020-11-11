@@ -55,7 +55,7 @@ class Api extends Request_m{
                 throw new Exception('Erro do id pessoa');
             }
             $db->commit();
-            $retorno = ['Sucesso'=>'Removido com sucesso'];
+            $retorno = ['Sucesso'=>'Pessoa removido com sucesso'];
         }catch (\Throwable $e) {
             $db->rollBack();
             $retorno = ['Erro'=>$e->getMessage()];
@@ -125,16 +125,20 @@ class Api extends Request_m{
     } 
 
     public function lista_pessoas($data){ 
-        $db = Conect::abreConexao();        
-        $co_pessoa = $db->prepare('SELECT pessoas.id,
+        $db = Conect::abreConexao();  
+        (isset($data['id_pessoa']))?
+            $parametro_query =  " WHERE pessoas.id = ".$data['id_pessoa']
+            : $parametro_query = '';    
+        $co_pessoa = $db->prepare("SELECT pessoas.id,
                                         pessoas.nome,
-                                        GROUP_CONCAT(DISTINCT JSON_OBJECT(pessoas_contato.nome_contato, pessoas_contato.contato)) JSON
+                                        GROUP_CONCAT(DISTINCT CONCAT(pessoas_contato.nome_contato, ': ', pessoas_contato.contato)) lista_contatos
                                     FROM pessoas
                                         INNER JOIN pessoas_contato ON pessoas_contato.id_pessoa = pessoas.id
+                                    ".$parametro_query." 
                                     GROUP BY pessoas.id
-                                ');
+                                ");
         $co_pessoa->execute();  
-        $retorno = $co_pessoa->fetchAll(PDO::FETCH_OBJ);
+        $retorno = $co_pessoa->fetchAll();
     
         $this->resposta->setData($retorno);
         $this->resposta->send();

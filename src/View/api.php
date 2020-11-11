@@ -21,10 +21,10 @@
         JSON: {    
                 "nome":"mario",
                 "contato":{
-                    "telefone":"359915684",
-                    "whatsapp":"3599159541",
-                    "telegran":"3525611211",
-                    "email":"jose@jose"
+                    "telefone":"0000000000",
+                    "whatsapp":"0000000000",
+                    "telegran":"000000000",
+                    "email":"mail@mail"
                     }            
                 }
                     
