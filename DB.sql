@@ -21,14 +21,13 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela projeto.pessoas: ~17 rows (aproximadamente)
+-- Copiando dados para a tabela projeto.pessoas: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `pessoas` DISABLE KEYS */;
 INSERT INTO `pessoas` (`id`, `nome`) VALUES
-	(64, 'mario'),
-	(65, 'Andressaa'),
-	(66, 'sdf');
+	(92, 'Jose '),
+	(93, 'Andressa ');
 /*!40000 ALTER TABLE `pessoas` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela projeto.pessoas_contato
@@ -39,17 +38,18 @@ CREATE TABLE IF NOT EXISTS `pessoas_contato` (
   `contato` varchar(85) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `FK_pessoas_contato_pessoas` (`id_pessoa`),
-  CONSTRAINT `FK_pessoas_contato_pessoas` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `FK_pessoas_contato_pessoas` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela projeto.pessoas_contato: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela projeto.pessoas_contato: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `pessoas_contato` DISABLE KEYS */;
 INSERT INTO `pessoas_contato` (`id`, `id_pessoa`, `nome_contato`, `contato`) VALUES
-	(1, 64, '123456', '4548945'),
-	(2, 64, 'zap', 'sedf'),
-	(3, 65, 'zap', '12524'),
-	(4, 65, 'tel', '256'),
-	(5, 66, 'sdf', 'sdf');
+	(40, 92, 'tel', '3598121'),
+	(41, 92, 'Email', 'jose@jose'),
+	(42, 92, 'ZAP ', '359845154'),
+	(43, 93, 'Tel', '35987941'),
+	(44, 93, 'tel2', '369531254'),
+	(45, 93, '', '');
 /*!40000 ALTER TABLE `pessoas_contato` ENABLE KEYS */;
 
 -- Copiando estrutura para trigger projeto.pessoas_before_delete
